@@ -1,0 +1,44 @@
+<!-- USO DE DIRECTIVA-->
+<h1 appColores>Titulo del proyecto | Con directiva</h1>
+<!--USO DE NG CLASS -->
+<h3 [ngClass]="{'subtitulo': activar,
+ 'subtitulo2': !activar}">
+  Este es el listado de alumnos  |con ng class
+</h3>
+
+<!--USO DE NG STYLE -->
+<h3 [ngStyle]="{'font-size':'50px'}">
+  Bienvenidos al listado de alumnos  | con ng style
+</h3>
+
+<!--USO DE NG IF, NG FOR Y PIPES-->
+<h4>Listado de alumnos con uso de ngif, ngfor y pipes, se cambia el estilo del titulo" Este es el listado de alumnos" y se oculta la lista</h4>
+<table *ngIf="activar">
+<tr *ngFor="let alumno of alumnos">
+    {{ alumno.nombre | uppercase}} -  {{ alumno.fechaInscripcion| date : "short"}}  - {{alumno.edad}} años
+</tr>
+</table>
+<br><br>
+<h4>Uso de button con atributo booleano</h4>
+<!-- USO DE BUTTON SEGUN VARIABLE PARA MOSTRAR Y QUITAR LISTA DE ALUMNOS Y ADEMAS CAMBIAR EL TITULO-->
+<button (click)="activar=true">Mostar alumnos</button>
+<button (click)="activar= false">Ocultar alumnos</button>
+<button (click)="activar = !activar">Alternar</button>
+
+<div >
+<br><br><br><br>
+
+<h4>Uso de ng Switch</h4>
+<!--USO DE SWITCH -->
+<div [ngSwitch]="numero">
+  <span *ngSwitchCase="1">El valor es igual a 1</span>
+  <span *ngSwitchCase="2">El valor es igual a 2</span>
+  <span *ngSwitchCase="3">El valor es igual a 3</span>
+  <span *ngSwitchDefault> No se encuentra en la lista de numeros</span>
+  </div>
+  <br><br>
+
+  <button (click)="numero = 1">Mostrar numero 1</button>
+  <button (click)="numero = 2">Mostrar numero 2</button>
+  <button (click)="numero = 3">Mostrar numero 3</button>
+  <button (click)="numero = 5">Valor no encontrado</button>  
